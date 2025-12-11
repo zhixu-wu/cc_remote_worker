@@ -14,7 +14,6 @@ cp servers.conf.template servers.conf
 编辑 `servers.conf`,添加你的服务器信息:
 ```
 # 格式: 别名|主机|端口|用户名|密码
-hawkbit|192.168.77.142|22|hawkbit|YourPassword
 production|10.0.0.100|22|admin|YourPassword
 ```
 
