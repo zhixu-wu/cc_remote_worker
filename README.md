@@ -144,6 +144,3 @@ brew install sshpass
 - 修改配置文件前务必备份
 - Docker配置更新使用 `--force-recreate`
 
-## 许可证
-
-本项目为内部运维工具,仅供授权人员使用。
