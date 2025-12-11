@@ -32,3 +32,5 @@ Thumbs.db
 
 # task Markdown files
 *.md
+
+local_project_description/
