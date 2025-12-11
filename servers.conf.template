@@ -1,0 +1,14 @@
+# SSH Server Configuration Template
+# Copy this file to servers.conf and fill in your server details
+# Format: ALIAS|HOST|PORT|USER|PASSWORD
+#
+# IMPORTANT:
+# - Add servers.conf to .gitignore to avoid committing credentials
+# - Keep this template file for reference
+
+# Example configurations:
+# hawkbit|192.168.77.142|22|hawkbit|YourPassword
+# production|10.0.0.100|22|admin|YourPassword
+# staging|10.0.0.101|2222|deploy|YourPassword
+
+# Add your servers below:
