@@ -34,10 +34,19 @@ if [ -z "$SERVER_LINE" ]; then
     exit 1
 fi
 
-IFS='|' read -r _ HOST PORT USER PASSWORD <<< "$SERVER_LINE"
+IFS='|' read -r _ HOST PORT USER AUTH <<< "$SERVER_LINE"
 
-# Execute SSH command
-sshpass -p "${PASSWORD}" ssh -o StrictHostKeyChecking=no \
-  -o UserKnownHostsFile=/dev/null \
-  -o ServerAliveInterval=60 \
-  -p "${PORT}" "${USER}@${HOST}" "$COMMAND"
+# Detect if AUTH is a file path (SSH key) or password
+if [ -f "$AUTH" ]; then
+    # SSH key authentication
+    ssh -i "$AUTH" -o StrictHostKeyChecking=no \
+      -o UserKnownHostsFile=/dev/null \
+      -o ServerAliveInterval=60 \
+      -p "${PORT}" "${USER}@${HOST}" "$COMMAND"
+else
+    # Password authentication
+    sshpass -p "${AUTH}" ssh -o StrictHostKeyChecking=no \
+      -o UserKnownHostsFile=/dev/null \
+      -o ServerAliveInterval=60 \
+      -p "${PORT}" "${USER}@${HOST}" "$COMMAND"
+fi
